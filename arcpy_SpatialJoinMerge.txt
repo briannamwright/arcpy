@@ -1,7 +1,8 @@
-YearList = [2007,2015]
+YearList = [2006,2008,2014]
 for year in YearList:
+    fishname = "Hal"
     targetFeatures = "Grid_4km"
-    joinFeatures = "Hal_cpue_"+str(year)+grid_size+"_3vess"
+    joinFeatures = fishname +"_cpue_"+str(year)+grid_size+"_3vess"
     outfc = "Hal_cpue_"+str(year)+"_final"
  
     # Create the required FieldMap and FieldMappings objects
