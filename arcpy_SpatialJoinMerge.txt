@@ -1,6 +1,6 @@
 YearList = [2006,2008,2014]
 for year in YearList:
-    fishname = "Bananafish"
+    fishname = "Nemo"
     targetFeatures = "Grid_4km"
     joinFeatures = fishname +"_cpue_"+str(year)+grid_size+"_3vess"
     outfc = "Hal_cpue_"+str(year)+"_final"
