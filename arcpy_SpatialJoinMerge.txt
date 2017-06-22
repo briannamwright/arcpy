@@ -17,7 +17,7 @@ for year in YearList:
  
     # Add fields to their corresponding FieldMap objects
     fm_cpue.addInputField(joinFeatures, cpue)
-    fm_cpue.mergeRule = 'Mean'
+    fm_cpue.mergeRule = 'Median'
  
     # Set the output field properties for both FieldMap objects
     cpue_name = fm_cpue.outputField
