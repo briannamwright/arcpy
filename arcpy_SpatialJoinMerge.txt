@@ -1,0 +1,30 @@
+YearList = [2007,2015]
+for year in YearList:
+    targetFeatures = "Grid_4km"
+    joinFeatures = "Hal_cpue_"+str(year)+grid_size+"_3vess"
+    outfc = "Hal_cpue_"+str(year)+"_final"
+ 
+    # Create the required FieldMap and FieldMappings objects
+    fm_cpue = arcpy.FieldMap()
+    fm_number_skates = arcpy.FieldMap()
+    fms = arcpy.FieldMappings()
+ 
+    # Get the field names of vegetation type and diameter for both original
+    # files
+ 
+    cpue = "Hal_cpue_"+str(year)+grid_size+"_KG_PER_SKATE"
+ 
+    # Add fields to their corresponding FieldMap objects
+    fm_cpue.addInputField(joinFeatures, cpue)
+    fm_cpue.mergeRule = 'Mean'
+ 
+    # Set the output field properties for both FieldMap objects
+    cpue_name = fm_cpue.outputField
+    cpue_name.name = 'CPUE'
+    fm_cpue.outputField = cpue_name
+ 
+    # Add the FieldMap objects to the FieldMappings object
+    fms.addFieldMap(fm_cpue)
+ 
+    #Run spatial join using the FieldMappings object
+    arcpy.SpatialJoin_analysis(targetFeatures,joinFeatures,outfc,"#", "#", fms)
